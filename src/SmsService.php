@@ -93,9 +93,8 @@ class SmsService
 
         // 发起访问请求
         $acsResponse = $this->client->sendSms($request);
-
         // 打印请求结果
-        $acsResponse = self::object_array($acsResponse);
+        $acsResponse = $acsResponse->body->toMap();
         if(array_key_exists('Message', $acsResponse) && $acsResponse['Code']=='OK'){
             return json_encode([
                 'code' => 200,
@@ -140,7 +139,7 @@ class SmsService
         // 发起访问请求
         $acsResponse = $this->client->sendBatchSms($request);
         // 打印请求结果
-        $acsResponse = self::object_array($acsResponse);
+        $acsResponse = $acsResponse->body->toMap();
         if(array_key_exists('Message', $acsResponse) && $acsResponse['Code']=='OK'){
             return json_encode([
                 'code' => 200,
@@ -184,21 +183,5 @@ class SmsService
         // var_dump($acsResponse);
 
         return $this->client->querySendDetails($request);
-    }
-
-    /**
-     * 对象转数组
-     * @param $array
-     * @return array
-     */
-    public static function object_array($array) {
-        if(is_object($array)) {
-            $array = (array)$array;
-        } if(is_array($array)) {
-            foreach($array as $key=>$value) {
-                $array[$key] = self::object_array($value);
-            }
-        }
-        return $array;
     }
 }
