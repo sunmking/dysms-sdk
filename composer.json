@@ -17,5 +17,6 @@
       "name": "sunmking",
       "email": "1042080686@qq.com"
     }
-  ]
+  ],
+  "minimum-stability": "stable"
 }
