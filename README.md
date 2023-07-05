@@ -21,7 +21,7 @@ composer require "sunmking/dysms-sdk:@dev"
 > 代码中调用（调用短信发送接口示例）
 
 ```bash
-    use saviorlv\aliyun\SmsService;
+    use Sunmking\DysmsSdk\SmsService;
     $accessKeyId = '2w2w2';
     $accessKeySecret = '2w2w2w2w2w';
     $obj = new SmsService($accessKeyId,$accessKeySecret);
