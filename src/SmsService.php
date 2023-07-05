@@ -67,6 +67,14 @@ class SmsService
         return new Dysmsapi($config);
     }
 
+    /**
+     * @param $signName
+     * @param $templateCode
+     * @param $phoneNumbers
+     * @param $templateParam
+     * @param $outId
+     * @return array
+     */
     public function sendSms($signName, $templateCode, $phoneNumbers, $templateParam = null, $outId = null) {
 
         // 初始化SendSmsRequest实例用于设置发送短信的参数
@@ -96,10 +104,10 @@ class SmsService
         // 打印请求结果
         $acsResponse = $acsResponse->body->toMap();
         if(array_key_exists('Message', $acsResponse) && $acsResponse['Code']=='OK'){
-            return json_encode([
+            return [
                 'code' => 200,
                 'message' => '验证码发送成功'
-            ]);
+            ];
         }
         return DyUtils::result($acsResponse);
     }
@@ -110,7 +118,7 @@ class SmsService
      * @param $templateCode
      * @param $phoneNumbers
      * @param null $templateParam
-     * @return false|string
+     * @return array
      */
     public function sendBatchSms($signName, $templateCode, $phoneNumbers, $templateParam = null) {
 
@@ -141,10 +149,10 @@ class SmsService
         // 打印请求结果
         $acsResponse = $acsResponse->body->toMap();
         if(array_key_exists('Message', $acsResponse) && $acsResponse['Code']=='OK'){
-            return json_encode([
+            return [
                 'code' => 200,
                 'message' => '验证码发送成功'
-            ]);
+            ];
         }
         return DyUtils::result($acsResponse);
     }
