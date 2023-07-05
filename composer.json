@@ -1,0 +1,21 @@
+{
+  "name": "sunmking/dysms-sdk",
+  "description": "aliyun sms dysms",
+  "type": "library",
+  "require": {
+    "alibabacloud/dysmsapi-20170525": "2.0.24",
+    "ext-json": "*"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Sunmking\\DysmsSdk\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "sunmking",
+      "email": "1042080686@qq.com"
+    }
+  ]
+}
